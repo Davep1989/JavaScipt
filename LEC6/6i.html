@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <script>
+      const Rnumber = Math.random();
+      let result
+
+      if (Rnumber < 0.5){
+        result = 'heads';
+      }else{
+        result = 'tails';
+      }
+
+      const guess = 'heads';
+      if (guess === result ){
+        console.log('You Win');
+      }else{
+        console.log('You Lose');
+      }
+    </script>
+  </body>
+</html>
