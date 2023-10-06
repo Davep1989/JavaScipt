@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String to Lowercase</title>
+</head>
+<body>
+    <h1>Convert "Good Morning" to Lowercase</h1>
+    <p>Original String: "Good Morning"</p>
+    <button onclick="convertToLowerCase()">Convert to Lowercase</button>
+    <p>Result: <span id="result"></span></p>
+
+    <script>
+        function convertToLowerCase() {
+            const originalString = "Good Morning";
+            const resultElement = document.getElementById('result');
+            const lowercaseString = originalString.toLowerCase();
+            resultElement.textContent = lowercaseString;
+        }
+    </script>
+</body>
+</html>
