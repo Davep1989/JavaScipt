@@ -9,26 +9,38 @@
     <button onclick="
        playGame('tails');
     ">tails</button>
+    <div id="score-display">Wins: 0, Losses: 0</div>
 
     <script>
-
       let score = {
-        wins:0,
-        losses:0
+        wins: 0,
+        losses: 0
       }
+
+      const storedScore = localStorage.getItem('score');
+      if (storedScore) {
+        score = JSON.parse(storedScore);
+        updateScoreDisplay();
+      }
+
       function playGame(guess){
         const randomNumber = Math.random();
         const result = randomNumber < 0.5 ? 'heads' : 'tails';
 
-        console.log(guess === result ? 'You wun' : 'you lose!');
+        console.log(guess === result ? 'You win' : 'You lose!');
 
-      if (guess === result){
-        score.wins++;
-      }else{
-        score.losses++;
+        if (guess === result){
+          score.wins++;
+        } else {
+          score.losses++;
+        }
+        localStorage.setItem('score', JSON.stringify(score));
+
+        updateScoreDisplay();
       }
-      console.log(score)
 
+      function updateScoreDisplay() {
+        document.getElementById('score-display').textContent = `Wins: ${score.wins}, Losses: ${score.losses}`;
       }
     </script>
   </body>
