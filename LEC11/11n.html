@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array</title>
+</head>
+<body>
+
+<button id="myButton">array</button>
+
+<script>
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function () {
+
+      function countWords(words){
+        const result = {};
+
+        for (let i = 0; i < words.length; i++){
+          const word = words[i];
+
+          if (!result[word]) {
+            result[word] = 1;    
+          }else{
+            result[word]++;
+          }
+        }
+
+        return result;
+      }
+
+      console.log(countWords(['apple', 'grapes','apple','apple']));
+
+    });
+</script>
+
+</body>
+</html>
