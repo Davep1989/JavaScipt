@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+  </head>
+  <body>
+    <!-- Botones para ejecutar ejercicios -->
+    <button onclick="runExercise12c()">Ejercicio 12c</button>
+    <button onclick="runExercise12d()">Ejercicio 12d</button>
+    <button onclick="runExercise12e()">Ejercicio 12e</button>
+    <button onclick="runExercise12f()">Ejercicio 12f</button>
+    <button onclick="runExercise12g()">Ejercicio 12g</button>
+    <button onclick="runExercise12h()">Ejercicio 12h</button>
+    <button onclick="runExercise12i()">Ejercicio 12i</button>
+
+    <!-- Scripts para cada ejercicio -->
+    <script>
+      // Ejercicio 12c
+      function runExercise12c() {
+        const button = document.querySelector('.js-button');
+        if (button) {
+          setTimeout(() => {
+            button.innerHTML = 'Finished!';
+          }, 1000);
+        }
+      }
+
+      // Ejercicio 12d
+      function runExercise12d() {
+        const button = document.querySelector('.js-button');
+        if (button) {
+          button.innerHTML = 'Loading...';
+          setTimeout(() => {
+            button.innerHTML = 'Finished!';
+          }, 2000);
+        }
+      }
+
+      // Ejercicio 12e
+      function runExercise12e() {
+        const button = document.querySelector('.js-button');
+        const message = document.querySelector('.js-message');
+        if (button && message) {
+          button.innerHTML = 'Added';
+          message.innerHTML = '';
+          setTimeout(() => {
+            button.innerHTML = 'Add to cart';
+          }, 2000);
+        }
+      }
+
+      // Ejercicio 12f
+      let timeoutId12f;
+      function runExercise12f() {
+        const messageElement = document.querySelector('.js-message');
+        if (messageElement) {
+          messageElement.innerHTML = 'Added';
+          clearTimeout(timeoutId12f);
+          timeoutId12f = setTimeout(() => {
+            messageElement.innerHTML = '';
+          }, 2000);
+        }
+      }
+
+      // Ejercicio 12g
+      function runExercise12g() {
+        setInterval(() => {
+          if (document.title === 'App') {
+            document.title = '(2) New messages';
+          } else {
+            document.title = 'App';
+          }
+        }, 1000);
+      }
+
+      // Ejercicio 12h
+      let messages12h = 2;
+      function runExercise12h() {
+        const addMessage = () => {
+          messages12h++;
+          updateTitle();
+        }
+
+        const removeMessage = () => {
+          messages12h--;
+          updateTitle();
+        }
+
+        const updateTitle = () => {
+          if (messages12h === 2) {
+            document.title = '(2) New messages';
+          } else {
+            document.title = 'App';
+          }
+        }
+
+        setInterval(() => {
+          updateTitle();
+        }, 1000);
+      }
+
+      // Ejercicio 12i
+      let messages12i = 2;
+      let intervalId12i;
+      let isDisplayingNotification12i;
+
+      function runExercise12i() {
+        const displayNotification = () => {
+          if (isDisplayingNotification12i) {
+            return;
+          }
+
+          isDisplayingNotification12i = true;
+
+          intervalId12i = setInterval(() => {
+            if (document.title === 'App') {
+              document.title = `(${messages12i}) New messages`;
+            } else {
+              document.title = 'App';
+            }
+          }, 1000);
+        }
+
+        const stopNotification = () => {
+          isDisplayingNotification12i = false;
+
+          clearInterval(intervalId12i);
+          document.title = 'App';
+        }
+
+        const addMessage = () => {
+          messages12i++;
+          displayNotification();
+        }
+
+        const removeMessage = () => {
+          if (messages12i > 0) {
+            messages12i--;
+            if (messages12i === 0) {
+              stopNotification();
+            }
+          }
+        }
+
+        displayNotification(); // Iniciar notificación al cargar el ejercicio 12i
+      }
+    </script>
+  </body>
+</html>
