@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array</title>
+</head>
+<body>
+
+<button id="myButton">array</button>
+
+<script>
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function () {
+
+      function removeEgg(foods){
+        const real = foods.slice()
+        const reverse = real.reverse();
+        const result = []
+        let eggsRemoved = 0;
+
+        for (let i = 0; i < foods.length; i++) {
+          if (foods[i] === 'egg' && eggsRemoved < 2) {
+            eggsRemoved++;
+            continue;
+          }
+          result.push(foods[i])         
+        }
+        return result.reverse();
+      }
+      const foods = ['egg','apple','egg','egg','ham'];
+      console.log(removeEgg(foods));
+      console.log(foods);
+      
+
+    });
+</script>
+
+</body>
+</html>
