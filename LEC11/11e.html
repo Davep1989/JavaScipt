@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loop Example</title>
+</head>
+<body>
+
+<button id="myButton">Click me to start a loop</button>
+
+<script>
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function () {
+        for (let i = 5; i >= 0; i--) {
+            console.log(i);
+        }
+    });
+</script>
+
+</body>
+</html>
