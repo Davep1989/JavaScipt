@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+  </head>
+  <body>
+    <!-- Botones para ejecutar ejercicios -->
+    <button id="exercise12c">Ejercicio 12c</button>
+    <button id="exercise12d">Ejercicio 12d</button>
+    <button id="exercise12e">Ejercicio 12e</button>
+    <button id="exercise12f">Ejercicio 12f</button>
+    <button id="exercise12g">Ejercicio 12g</button>
+    <button id="exercise12h">Ejercicio 12h</button>
+    <button id="exercise12i">Ejercicio 12i</button>
+
+    <!-- Scripts para cada ejercicio -->
+    <script>
+      // Ejercicio 12c
+      document.getElementById('exercise12c').addEventListener('click', function() {
+        const button = document.querySelector('.js-button');
+        if (button) {
+          setTimeout(() => {
+            button.innerHTML = 'Finished!';
+          }, 1000);
+        }
+      });
+
+      // Ejercicio 12d
+      document.getElementById('exercise12d').addEventListener('click', function() {
+        const button = document.querySelector('.js-button');
+        if (button) {
+          button.innerHTML = 'Loading...';
+          setTimeout(() => {
+            button.innerHTML = 'Finished!';
+          }, 2000);
+        }
+      });
+
+      // Ejercicio 12e
+      document.getElementById('exercise12e').addEventListener('click', function() {
+        const button = document.querySelector('.js-button');
+        const message = document.querySelector('.js-message');
+        if (button && message) {
+          button.innerHTML = 'Added';
+          message.innerHTML = '';
+          setTimeout(() => {
+            button.innerHTML = 'Add to cart';
+          }, 2000);
+        }
+      });
+
+      // Ejercicio 12f
+      let timeoutId12f;
+      document.getElementById('exercise12f').addEventListener('click', function() {
+        const messageElement = document.querySelector('.js-message');
+        if (messageElement) {
+          messageElement.innerHTML = 'Added';
+          clearTimeout(timeoutId12f);
+          timeoutId12f = setTimeout(() => {
+            messageElement.innerHTML = '';
+          }, 2000);
+        }
+      });
+
+      // Ejercicio 12g
+      document.getElementById('exercise12g').addEventListener('click', function() {
+        setInterval(() => {
+          if (document.title === 'App') {
+            document.title = '(2) New messages';
+          } else {
+            document.title = 'App';
+          }
+        }, 1000);
+      });
+
+      // Ejercicio 12h
+      let messages12h = 2;
+      document.getElementById('exercise12h').addEventListener('click', function() {
+        const addMessage = () => {
+          messages12h++;
+          updateTitle();
+        }
+
+        const removeMessage = () => {
+          messages12h--;
+          updateTitle();
+        }
+
+        const updateTitle = () => {
+          if (messages12h === 2) {
+            document.title = '(2) New messages';
+          } else {
+            document.title = 'App';
+          }
+        }
+
+        setInterval(() => {
+          updateTitle();
+        }, 1000);
+      });
+
+      // Ejercicio 12i
+      let messages12i = 2;
+      let intervalId12i;
+      let isDisplayingNotification12i;
+
+      document.getElementById('exercise12i').addEventListener('click', function() {
+        const displayNotification = () => {
+          if (isDisplayingNotification12i) {
+            return;
+          }
+
+          isDisplayingNotification12i = true;
+
+          intervalId12i = setInterval(() => {
+            if (document.title === 'App') {
+              document.title = `(${messages12i}) New messages`;
+            } else {
+              document.title = 'App';
+            }
+          }, 1000);
+        }
+
+        const stopNotification = () => {
+          isDisplayingNotification12i = false;
+
+          clearInterval(intervalId12i);
+          document.title = 'App';
+        }
+
+        const addMessage = () => {
+          messages12i++;
+          displayNotification();
+        }
+
+        const removeMessage = () => {
+          if (messages12i > 0) {
+            messages12i--;
+            if (messages12i === 0) {
+              stopNotification();
+            }
+          }
+        }
+
+        displayNotification(); 
+      });
+    </script>
+  </body>
+</html>
